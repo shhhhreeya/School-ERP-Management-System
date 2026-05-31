@@ -122,12 +122,6 @@ const forgotPassword = async (req, res) => {
         message: "Email not registered",
       });
     }
-    if (!user.emailVerified) {
-  return res.status(401).json({
-    success: false,
-    message: "Please verify your email",
-  });
-}
 
     const otp = generateOTP();
 

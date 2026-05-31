@@ -14,9 +14,10 @@ import API from "../services/api";
 import { useNavigate } from "react-router-dom";
 
 const ForgotPassword = () => {
-  const [email, setEmail] = useState("");
+  const navigate = useNavigate();
+const [email, setEmail] = useState("");
 
-  const handleSubmit = async (e) => {
+const handleSubmit = async (e) => {
   e.preventDefault();
 
   try {
