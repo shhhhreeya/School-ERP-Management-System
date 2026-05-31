@@ -25,3 +25,49 @@ model User {
 
   createdAt       DateTime @default(now())
 }
+
+model Class {
+  id        Int       @id @default(autoincrement())
+  name      String
+
+  students  Student[]
+}
+
+model Section {
+  id        Int       @id @default(autoincrement())
+  name      String
+
+  students  Student[]
+}
+
+model Student {
+  id              Int      @id @default(autoincrement())
+
+  fullName        String
+  rollNumber      String   @unique
+
+  dob             DateTime
+
+  gender          String
+
+  address         String
+
+  parentDetails   String
+
+  contactNumber   String
+
+  email           String?
+
+  bloodGroup      String?
+
+  admissionDate   DateTime
+
+  classId         Int
+  sectionId       Int
+
+  class           Class @relation(fields:[classId], references:[id])
+
+  section         Section @relation(fields:[sectionId], references:[id])
+
+  createdAt       DateTime @default(now())
+}
