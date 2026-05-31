@@ -8,11 +8,20 @@ datasource db {
 }
 
 model User {
-  id        Int      @id @default(autoincrement())
-  name      String
-  email     String   @unique
-  password  String
-  role      String
-  isActive  Boolean  @default(true)
-  createdAt DateTime @default(now())
+  id              Int      @id @default(autoincrement())
+
+  name            String
+  email           String   @unique
+  password        String
+
+  role            String
+
+  isActive        Boolean  @default(true)
+
+  emailVerified   Boolean  @default(false)
+
+  otp             String?
+  otpExp          DateTime?
+
+  createdAt       DateTime @default(now())
 }
