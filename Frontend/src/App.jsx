@@ -18,6 +18,8 @@ import Register from "./pages/Register";
 
 import Students from "./pages/Students";
 
+import Attendance from "./pages/Attendance";
+
 function App() {
   return (
     <BrowserRouter>
@@ -26,7 +28,7 @@ function App() {
           path="/"
           element={<Login />}
         />
-        
+
         <Route
   path="/forgot-password"
   element={<ForgotPassword />}
@@ -56,6 +58,14 @@ function App() {
           </ProtectedRoute>
         }
         />
+        <Route
+  path="/admin/attendance"
+  element={
+    <ProtectedRoute>
+      <Attendance />
+    </ProtectedRoute>
+  }
+/>
       </Routes>
     </BrowserRouter>
   );
