@@ -13,13 +13,15 @@ const AdminLayout = ({ children }) => {
       <Sidebar />
 
       <Box
-        component="main"
-        sx={{
-          flexGrow: 1,
-          p: 3,
-          ml: "240px",
-        }}
-      >
+  component="main"
+  sx={{
+    flexGrow: 1,
+    p: 4,
+    ml: "240px",
+    background: "#f5f7fb",
+    minHeight: "100vh",
+  }}
+>
         <Toolbar />
 
         {children}
