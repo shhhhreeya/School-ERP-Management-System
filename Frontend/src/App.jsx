@@ -26,15 +26,7 @@ function App() {
           path="/"
           element={<Login />}
         />
-
-        <Route
-          path="/dashboard"
-          element={
-            <ProtectedRoute>
-              <Dashboard />
-            </ProtectedRoute>
-          }
-        />
+        
         <Route
   path="/forgot-password"
   element={<ForgotPassword />}
@@ -50,7 +42,19 @@ function App() {
         />
         <Route
           path="/admin/students"
-          element={<Students />}
+          element={
+            <ProtectedRoute>
+              <Students />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+        path="/admin/dashboard"
+        element={
+          <ProtectedRoute>
+            <Dashboard />
+          </ProtectedRoute>
+        }
         />
       </Routes>
     </BrowserRouter>
