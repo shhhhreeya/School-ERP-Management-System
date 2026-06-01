@@ -52,7 +52,24 @@ const Login = () => {
         })
       );
 
-      navigate("/dashboard");
+      const role =
+  res.data.data.role.toLowerCase();
+
+if (role === "admin") {
+  navigate("/admin/dashboard");
+}
+
+else if (role === "student") {
+  navigate("/student/dashboard");
+}
+
+else if (role === "teacher") {
+  navigate("/teacher/dashboard");
+}
+
+else {
+  navigate("/");
+}
     } catch (error) {
       alert(error.response.data.message);
     }

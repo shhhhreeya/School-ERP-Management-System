@@ -20,6 +20,8 @@ import Students from "./pages/Students";
 
 import Attendance from "./pages/Attendance";
 
+import StudentDashboard from "./pages/StudentDashboard";
+
 function App() {
   return (
     <BrowserRouter>
@@ -63,6 +65,14 @@ function App() {
   element={
     <ProtectedRoute>
       <Attendance />
+    </ProtectedRoute>
+  }
+/>
+<Route
+  path="/student/dashboard"
+  element={
+    <ProtectedRoute>
+      <StudentDashboard />
     </ProtectedRoute>
   }
 />

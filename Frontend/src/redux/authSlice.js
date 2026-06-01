@@ -11,21 +11,33 @@ const authSlice = createSlice({
 
   reducers: {
     loginSuccess: (state, action) => {
-      state.user = action.payload.user;
-      state.token = action.payload.token;
+  state.user = action.payload.user;
+  state.token = action.payload.token;
 
-      localStorage.setItem(
-        "token",
-        action.payload.token
-      );
-    },
+  localStorage.setItem(
+    "token",
+    action.payload.token
+  );
+
+  localStorage.setItem(
+    "user",
+    JSON.stringify(action.payload.user)
+  );
+
+  localStorage.setItem(
+    "role",
+    action.payload.user.role
+  );
+},
 
     logout: (state) => {
-      state.user = null;
-      state.token = null;
+  state.user = null;
+  state.token = null;
 
-      localStorage.removeItem("token");
-    },
+  localStorage.removeItem("token");
+  localStorage.removeItem("user");
+  localStorage.removeItem("role");
+},
   },
 });
 
