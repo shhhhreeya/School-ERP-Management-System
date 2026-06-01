@@ -83,7 +83,7 @@ else {
         justifyContent: "center",
         alignItems: "center",
         background:
-          "linear-gradient(to right, #4facfe, #00f2fe)",
+          "linear-gradient(to right, #667eea, #764ba2)",
       }}
     >
       <Card

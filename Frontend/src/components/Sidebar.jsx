@@ -4,6 +4,10 @@ import EventAvailableIcon from "@mui/icons-material/EventAvailable";
 import PaymentsIcon from "@mui/icons-material/Payments";
 import LogoutIcon from "@mui/icons-material/Logout";
 import { Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { logout } from "../redux/authSlice";
+import { useNavigate } from "react-router-dom";
+import { Divider } from "@mui/material";
 
 import {
   Drawer,
@@ -19,6 +23,14 @@ import {
 const drawerWidth = 240;
 
 const Sidebar = () => {
+    const dispatch = useDispatch();
+const navigate = useNavigate();
+
+const handleLogout = () => {
+  dispatch(logout());
+
+  navigate("/");
+};
   return (
     <Drawer
       variant="permanent"
@@ -76,6 +88,19 @@ const Sidebar = () => {
 
   <ListItemButton
     component={Link}
+    to="/admin/teachers"
+  >
+    <ListItemIcon sx={{ color: "white" }}>
+      <PeopleIcon />
+    </ListItemIcon>
+
+    <ListItemText
+      primary="Teachers"
+    />
+  </ListItemButton>
+
+  <ListItemButton
+    component={Link}
     to="/admin/attendance"
   >
     <ListItemIcon sx={{ color: "white" }}>
@@ -96,6 +121,23 @@ const Sidebar = () => {
       primary="Fees"
     />
   </ListItemButton>
+  <Divider
+  sx={{
+    bgcolor: "rgba(255,255,255,0.2)",
+    my: 2,
+  }}
+/>
+  <ListItemButton
+  onClick={handleLogout}
+>
+  <ListItemIcon sx={{ color: "white" }}>
+    <LogoutIcon />
+  </ListItemIcon>
+      
+  <ListItemText
+    primary="Logout"
+  />
+</ListItemButton>
 
 </List>
     </Drawer>

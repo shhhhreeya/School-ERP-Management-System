@@ -55,7 +55,7 @@ const Dashboard = () => {
           variant="h4"
           fontWeight="bold"
         >
-          Welcome Back, Admin 👋
+          Welcome Back Admin 👋
         </Typography>
 
         <Typography>
@@ -105,7 +105,7 @@ const Dashboard = () => {
             </Typography>
 
             <Typography variant="h3">
-              8
+              0
             </Typography>
           </CardContent>
         </Card>
@@ -124,11 +124,11 @@ const Dashboard = () => {
             <EventAvailableIcon fontSize="large" />
 
             <Typography variant="h6">
-              Attendance
+              Student Attendance
             </Typography>
 
             <Typography variant="h3">
-              92%
+              100%
             </Typography>
           </CardContent>
         </Card>
@@ -151,7 +151,7 @@ const Dashboard = () => {
             </Typography>
 
             <Typography variant="h3">
-              ₹50K
+              ₹0
             </Typography>
           </CardContent>
         </Card>
