@@ -4,6 +4,8 @@ require("dotenv").config();
 
 const authRoutes = require("./routes/authRoutes");
 const studentRoutes = require("./routes/studentRoutes");
+const attendanceRoutes =
+  require("./routes/attendanceRoutes");
 
 const app = express();
 
@@ -14,6 +16,10 @@ app.use(express.urlencoded({ extended: true }));
 // Routes AFTER middleware
 app.use("/api/auth", authRoutes);
 app.use("/api/students", studentRoutes);
+app.use(
+  "/api/attendance",
+  attendanceRoutes
+);
 
 app.get("/", (req, res) => {
   res.send("ERP API Running");

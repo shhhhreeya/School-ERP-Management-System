@@ -8,66 +8,88 @@ datasource db {
 }
 
 model User {
-  id              Int      @id @default(autoincrement())
+  id Int @id @default(autoincrement())
 
-  name            String
-  email           String   @unique
-  password        String
+  name     String
+  email    String @unique
+  password String
 
-  role            String
+  role String
 
-  isActive        Boolean  @default(true)
+  isActive Boolean @default(true)
 
-  emailVerified   Boolean  @default(false)
+  emailVerified Boolean @default(false)
 
-  otp             String?
-  otpExp          DateTime?
+  otp    String?
+  otpExp DateTime?
 
-  createdAt       DateTime @default(now())
+  createdAt DateTime @default(now())
 }
 
 model Class {
-  id        Int       @id @default(autoincrement())
-  name      String
+  id   Int    @id @default(autoincrement())
+  name String
 
-  students  Student[]
+  students Student[]
 }
 
 model Section {
-  id        Int       @id @default(autoincrement())
-  name      String
+  id   Int    @id @default(autoincrement())
+  name String
 
-  students  Student[]
+  students Student[]
 }
 
 model Student {
-  id              Int      @id @default(autoincrement())
+  id Int @id @default(autoincrement())
 
-  fullName        String
-  rollNumber      String   @unique
+  fullName   String
+  rollNumber String @unique
 
-  dob             DateTime
+  attendances Attendance[]
 
-  gender          String
+  dob DateTime
 
-  address         String
+  gender String
 
-  parentDetails   String
+  address String
 
-  contactNumber   String
+  parentDetails String
 
-  email           String?
+  contactNumber String
 
-  bloodGroup      String?
+  email String?
 
-  admissionDate   DateTime
+  bloodGroup String?
 
-  classId         Int
-  sectionId       Int
+  admissionDate DateTime
 
-  class           Class @relation(fields:[classId], references:[id])
+  classId   Int
+  sectionId Int
 
-  section         Section @relation(fields:[sectionId], references:[id])
+  class Class @relation(fields: [classId], references: [id])
 
-  createdAt       DateTime @default(now())
+  section Section @relation(fields: [sectionId], references: [id])
+
+  createdAt DateTime @default(now())
+}
+
+model Attendance {
+  id Int @id @default(autoincrement())
+
+  date DateTime
+
+  status AttendanceStatus
+
+  studentId Int
+
+  student Student @relation(fields: [studentId], references: [id])
+
+  createdAt DateTime @default(now())
+}
+
+enum AttendanceStatus {
+  PRESENT
+  ABSENT
+  LATE
 }
