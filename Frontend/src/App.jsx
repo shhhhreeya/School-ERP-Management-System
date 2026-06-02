@@ -22,6 +22,10 @@ import Attendance from "./pages/Attendance";
 
 import StudentDashboard from "./pages/StudentDashboard";
 
+import Classrooms from "./pages/Classrooms";
+
+import ClassroomDetails from "./pages/ClassroomDetails";
+
 function App() {
   return (
     <BrowserRouter>
@@ -76,6 +80,16 @@ function App() {
     </ProtectedRoute>
   }
 />
+<Route
+  path="/admin/classrooms"
+  element={<Classrooms />}
+/>
+
+<Route
+  path="/admin/classroom/:id"
+  element={<ClassroomDetails />}
+/>
+
       </Routes>
     </BrowserRouter>
   );

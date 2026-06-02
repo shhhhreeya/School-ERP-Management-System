@@ -75,7 +75,7 @@ const handleLogout = () => {
 
   <ListItemButton
     component={Link}
-    to="/admin/students"
+    to="/admin/classrooms"
   >
     <ListItemIcon sx={{ color: "white" }}>
       <PeopleIcon />
