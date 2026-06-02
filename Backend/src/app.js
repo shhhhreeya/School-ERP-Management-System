@@ -6,6 +6,10 @@ const authRoutes = require("./routes/authRoutes");
 const studentRoutes = require("./routes/studentRoutes");
 const attendanceRoutes =
   require("./routes/attendanceRoutes");
+const teacherRoutes =
+require("./routes/teacherRoutes");
+const subjectRoutes =
+require("./routes/subjectRoutes");
 
 const app = express();
 
@@ -24,6 +28,14 @@ app.use(
 app.get("/", (req, res) => {
   res.send("ERP API Running");
 });
+app.use(
+  "/api/teachers",
+  teacherRoutes
+);
+app.use(
+  "/api/subjects",
+  subjectRoutes
+);
 
 const PORT = process.env.PORT || 5000;
 

@@ -34,8 +34,13 @@ model Class {
 }
 
 model Section {
-  id   Int    @id @default(autoincrement())
+  id Int @id @default(autoincrement())
+
   name String
+
+  classTeacherId Int?
+
+  classTeacher Teacher? @relation("ClassTeacher", fields: [classTeacherId], references: [id])
 
   students Student[]
 }
@@ -92,4 +97,39 @@ enum AttendanceStatus {
   PRESENT
   ABSENT
   LATE
+}
+
+model Teacher {
+  id Int @id @default(autoincrement())
+
+  fullName String
+
+  email String @unique
+
+  phone String?
+
+  subjects SubjectTeacher[]
+
+  sections Section[] @relation("ClassTeacher")
+}
+
+model Subject {
+  id Int @id @default(autoincrement())
+
+  name String @unique
+
+  teachers SubjectTeacher[]
+}
+
+model SubjectTeacher {
+  id Int @id @default(autoincrement())
+
+  teacherId Int
+  subjectId Int
+
+  teacher Teacher @relation(fields: [teacherId], references: [id])
+
+  subject Subject @relation(fields: [subjectId], references: [id])
+
+  @@unique([teacherId, subjectId])
 }
