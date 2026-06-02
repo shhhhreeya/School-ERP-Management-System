@@ -82,7 +82,7 @@ const handleLogout = () => {
     </ListItemIcon>
 
     <ListItemText
-      primary="Students"
+      primary="Classrooms"
     />
   </ListItemButton>
 

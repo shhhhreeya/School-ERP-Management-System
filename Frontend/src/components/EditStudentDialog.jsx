@@ -19,6 +19,7 @@ const EditStudentDialog = ({
 }) => {
   const [formData, setFormData] =
     useState({});
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     if (student) {
@@ -35,11 +36,37 @@ const EditStudentDialog = ({
   };
 
   const handleSubmit = async () => {
+    // Validation
+    if (!formData.fullName?.trim()) {
+      alert("Full Name is required");
+      return;
+    }
+    if (!formData.rollNumber?.trim()) {
+      alert("Roll Number is required");
+      return;
+    }
+    if (!formData.email?.trim()) {
+      alert("Email is required");
+      return;
+    }
+    if (!formData.contactNumber?.trim()) {
+      alert("Contact Number is required");
+      return;
+    }
+
+    setLoading(true);
     try {
-      await updateStudent(
-        student.id,
-        formData
-      );
+      const updateData = {
+  fullName: formData.fullName,
+  rollNumber: formData.rollNumber,
+  email: formData.email,
+  contactNumber: formData.contactNumber,
+};
+
+await updateStudent(
+  student.id,
+  updateData
+);
 
       alert(
         "Student updated successfully"
@@ -49,7 +76,14 @@ const EditStudentDialog = ({
 
       handleClose();
     } catch (error) {
-      console.log(error);
+  console.log(error);
+  console.log(error.response);
+
+  alert(
+    JSON.stringify(error.response?.data)
+  );
+} finally {
+      setLoading(false);
     }
   };
 
@@ -111,15 +145,19 @@ const EditStudentDialog = ({
       </DialogContent>
 
       <DialogActions>
-        <Button onClick={handleClose}>
+        <Button 
+          onClick={handleClose}
+          disabled={loading}
+        >
           Cancel
         </Button>
 
         <Button
           variant="contained"
           onClick={handleSubmit}
+          disabled={loading}
         >
-          Update
+          {loading ? "Updating..." : "Update"}
         </Button>
       </DialogActions>
     </Dialog>

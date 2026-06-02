@@ -18,9 +18,7 @@ import AdminLayout from "../layouts/AdminLayout";
 
 import { getStudents } from "../services/studentService";
 
-import {
-  markAttendance,
-} from "../services/attendanceService";
+import {markAttendance} from "../services/attendanceService";
 
 const Attendance = () => {
   const [students, setStudents] = useState([]);

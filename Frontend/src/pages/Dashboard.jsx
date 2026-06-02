@@ -55,7 +55,7 @@ const Dashboard = () => {
           variant="h4"
           fontWeight="bold"
         >
-          Welcome Back Admin 👋
+          Welcome Back Admin🖊️
         </Typography>
 
         <Typography>
