@@ -86,7 +86,7 @@ function App() {
 />
 
 <Route
-  path="/admin/classroom/:id"
+  path="/admin/classroom/:classId/:sectionId"
   element={<ClassroomDetails />}
 />
 

@@ -10,36 +10,60 @@ import {
 } from "@mui/material";
 
 import AdminLayout from "../layouts/AdminLayout";
+import { useParams } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { getStudents } from "../services/studentService";
 
-const students = [
-  {
-    id: 1,
-    rollNumber: "101",
-    fullName: "Shreeya Jaiswal",
-  },
-
-  {
-    id: 2,
-    rollNumber: "102",
-    fullName: "Aryan Gupta",
-  },
-
-  {
-    id: 3,
-    rollNumber: "103",
-    fullName: "Priya Sharma",
-  },
-];
 
 const ClassroomDetails = () => {
+    const {
+  classId,
+  sectionId,
+} = useParams();
+
+const [students, setStudents] =
+  useState([]);
+  const fetchStudents =
+  async () => {
+    try {
+      const res =
+        await getStudents();
+
+      const filteredStudents =
+  res.data.data.filter(
+    (student) =>
+      student.classId ===
+        Number(classId) &&
+      student.sectionId ===
+        Number(sectionId)
+  );
+
+      setStudents(
+        filteredStudents
+      );
+    } catch (error) {
+      console.log(error);
+    }
+  };
+   useEffect(() => {
+  fetchStudents();
+}, [classId, sectionId]);
   return (
     <AdminLayout>
       <Typography
-        variant="h4"
-        mb={3}
-      >
-        Class 1 - A
-      </Typography>
+  variant="h4"
+  mb={3}
+>
+  Class {classId} - Section {sectionId}
+</Typography>
+        <Typography
+  mb={2}
+  color="text.secondary"
+>
+  Total Students:
+  {" "}
+  {students.length}
+</Typography>
 
       <Typography mb={1}>
         Class Teacher:
@@ -93,5 +117,6 @@ const ClassroomDetails = () => {
     </AdminLayout>
   );
 };
+
 
 export default ClassroomDetails;

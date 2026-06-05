@@ -9,79 +9,43 @@ import AdminLayout from "../layouts/AdminLayout";
 import { useNavigate } from "react-router-dom";
 
 const classrooms = [
-    
   {
     id: 1,
+
+    classId: 1,
+    sectionId: 1,
+
     className: "Class 1",
     section: "A",
+
     students: 32,
     teacher: "Priya Sharma",
   },
 
   {
     id: 2,
+
+    classId: 1,
+    sectionId: 2,
+
     className: "Class 1",
     section: "B",
+
     students: 28,
     teacher: "Rahul Verma",
   },
 
   {
     id: 3,
+
+    classId: 2,
+    sectionId: 1,
+
     className: "Class 2",
     section: "A",
+
     students: 35,
     teacher: "Anjali Gupta",
-  },
-
-  {
-    id: 4,
-    className: "Class 2",
-    section: "B",
-    students: 30,
-    teacher: "Amit Singh",
-  },
-  {
-    id: 5,
-    className: "Class 3",
-    section: "A",
-    students: 32,
-    teacher: "Priya Sharma",
-  },
-  {
-    id: 6,
-    className: "Class 3",
-    section: "B",
-    students: 32,
-    teacher: "Priya Sharma",
-  },
-  {
-    id: 7,
-    className: "Class 4",
-    section: "A",
-    students: 32,
-    teacher: "Priya Sharma",
-  },
-  {
-    id: 8,
-    className: "Class 4",
-    section: "B",
-    students: 32,
-    teacher: "Priya Sharma",
-  },
-  {
-    id: 9,
-    className: "Class 5",
-    section: "A",
-    students: 32,
-    teacher: "Priya Sharma",
-  },
-  {
-    id: 10,
-    className: "Class 5",
-    section: "B",
-    students: 32,
-    teacher: "Priya Sharma",
   },
 ];
 
@@ -108,8 +72,8 @@ const Classrooms = () => {
             <Card
   onClick={() =>
     navigate(
-      `/admin/classroom/${room.id}`
-    )
+  `/admin/classroom/${room.classId}/${room.sectionId}`
+)
   }
               sx={{
                 borderRadius: 4,
